@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+int checkrandom(int exp_val, int random_val)
+{
+    if (exp_val < random_val)
+    {
+        cout << "\nToo Low.Try Again :<" << endl;
+        cout << "Enter the Expected Value: ";
+        cin >> exp_val;
+        checkrandom(exp_val, random_val);
+    }
+    else if (exp_val > random_val)
+    {
+        cout << "\nToo High.Try Again :<" << endl;
+        cout << "Enter the Expected Value: ";
+        cin >> exp_val;
+        checkrandom(exp_val, random_val);
+    }
+    else
+    {
+        cout << "\nHURRAY!!!" << endl;
+        cout << "You Got The Right Guess :>" << endl;
+        cout << "Random value is:" << random_val << endl;
+    }
+}
+int main()
+{
+    int exp_num, random;
+    srand(time(NULL));
+    random = ((rand() % 100) + 1);
+    cout << "***WELCOME TO THE NUMBER GUESSING GAME***" << endl;
+    cout << "Enter the expected number: ";
+    cin >> exp_num;
+    checkrandom(exp_num, random);
+    return 0;
+}
